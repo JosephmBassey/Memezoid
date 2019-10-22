@@ -7,7 +7,7 @@ const NotFound = () => {
   <Layout>
     <SEO title='404: Not found! |' />
     <div className='ErrStyle'>
-      <h1>404: Not found!</h1>
+      <h1>Not found!</h1>
       <p>You just hit a route that doesn't exist...</p>
     </div>
   </Layout>

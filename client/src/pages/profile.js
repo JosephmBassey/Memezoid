@@ -2,11 +2,12 @@ import React from 'react';
 import SEO from '../components/seo';
 import Layout from '../components/layout';
 
-const Index = () => {
+const Profile = () => {
   return(
   <Layout>
-    <SEO title=' ' />
+    {/* Will change to username later in SEO component */}
+    <SEO title='Profile |' />
   </Layout>
   );
 }
-export default Index;
+export default Profile;
