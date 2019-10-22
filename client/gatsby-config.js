@@ -7,7 +7,7 @@ module.exports = {
   },
   proxy: {
     url: 'http://localhost:5000',
-    prefix: '/api'
+    prefix: '/api/v1/'
   },
   plugins: [
     'gatsby-plugin-remove-trailing-slashes',

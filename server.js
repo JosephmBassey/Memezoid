@@ -19,7 +19,11 @@ app.use(hsts({ maxAge: 15552000 }));
 /* ====================
 ====>   Routes
 ================== */
-app.use('/api', require('./routes/api/index'));
+app.use('/api/v1/feed', require('./routes/api/v1/feed'));
+app.use('/api/v1/login', require('./routes/api/v1/login'));
+app.use('/api/v1/signup', require('./routes/api/v1/signup'));
+app.use('/api/v1/upload', require('./routes/api/v1/upload'));
+app.use('/api/v1/profile', require('./routes/api/v1/profile'));
 
 /* ====================
 ====>   Start Server
