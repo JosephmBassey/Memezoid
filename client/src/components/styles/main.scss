@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 'vars.scss';
+* {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+html, body {
+  background: $--PrimaryWhite--;
+  scroll-behavior: smooth;
+  font-family: 'Roboto', sans-serif;
+}
+::-webkit-scrollbar {
+  height: 0;
+  width: 6px; 
+}
+::-webkit-scrollbar-track {
+  background: $--PrimaryBlack--;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: $--PrimaryWhite--;
+}
+::selection {
+  background: $--PrimaryBlack--;
+  color: $--PrimaryWhite--;
+}

@@ -1,0 +1,22 @@
+{
+  "author": "@Bvlktech",
+  "name": "memezoid",
+  "description": "Share Memes with the world.",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "express-rate-limit": "^5.0.0",
+    "concurrently": "^5.0.0",
+    "mongoose": "^5.7.5",
+    "express": "^4.17.1",
+    "helmet": "^3.21.1",
+    "multer": "^1.4.2",
+    "hsts": "^2.2.0"
+  },
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "concurrently \"yarn start\" \"cd client && yarn start\""
+  }
+}
