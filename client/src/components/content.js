@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'gatsby';
 import Swal from 'sweetalert2';
 import Loader from './loader';
 
@@ -25,7 +26,7 @@ const Content = () => {
       {posts.map(post => (<div key={ post.id } className='card'>
         <div className='authorBar'>
           <img src={ post.url } alt={ post.title } className='authorImage' />
-          <p>{ post.id }</p>
+          <Link to='/profile/:id' title={ `View ${ post.id } profile!` }>Bvlktech</Link>
         </div>
         <img src={ post.thumbnailUrl } alt={ post.title } className='cardImage' />
         <div className='dis'>

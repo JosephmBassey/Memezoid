@@ -59,6 +59,9 @@ module.exports = {
         fonts: [
           {
             family: 'Roboto'
+          },
+          {
+            family: 'Modak'
           }
         ]
       }

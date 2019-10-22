@@ -25,9 +25,9 @@ html, body {
   color: $--PrimaryWhite--;
 }
 
-/* ====================
+/* =======================
 ====> Topbar Style
-================== */
+====================== */
 .TopbarStyle {
   border-bottom: 1px solid $--PrimaryGrey--;
   background: $--PrimaryWhite--;
@@ -97,9 +97,9 @@ html, body {
   }
 }
 
-/* ====================
+/* =======================
 ====> Page Loader Style
-================== */
+====================== */
 .LoaderStyle {
   height: auto;
   text-align: center;
@@ -124,9 +124,9 @@ html, body {
   }
 }
 
-/* ====================
+/* =======================
 ====> Content Style
-================== */
+====================== */
 .ContentStyle {
   display: flex;
   flex-direction: column;
@@ -157,13 +157,14 @@ html, body {
           width: 50px;
           margin: 0 5px 0 0;
         }
-        p {
+        a {
           display: inline-block;
           color: $--PrimaryBlack--;
-          font-size: 16px;
+          font-size: 25px;
           font-weight: bold;
+          text-decoration: none;
           position: relative;
-          top: -18px;
+          top: -14px;
         }
       }
       .cardImage {
@@ -239,9 +240,9 @@ html, body {
   }
 }
 
-/* ====================
+/* =======================
 ====> Navbar Style
-================== */
+====================== */
 .NavbarStyle {
   display: none;
   @media screen and (min-width: $--width-300--) and (max-width: $--width-600--){
@@ -266,9 +267,91 @@ html, body {
   }
 }
 
-/* ====================
+/* =======================
+====> Profile Page Style
+====================== */
+.ProfileStyle {
+  height: auto;
+  .banner {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: auto;
+    ul {
+      background: $--PrimaryTransparent--;
+      height: auto;
+      padding: 30px 0 30px 0;
+      text-align: center;
+      .userImage {
+        border: 5px solid $--PrimaryWhite--;
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+      }
+      h1 {
+        color: $--PrimaryWhite--;
+        margin: 10px 0 0 0;
+        font-size: 40px;
+      }
+      p {
+        color: $--PrimaryWhite--;
+        margin: 10px 0 0 0;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+  .navbar {
+    border-bottom: 1px solid $--PrimaryGrey--;
+    background: $--PrimaryWhite--;
+    height: auto;
+    padding: 15px 15px 15px 15px;
+    a {
+      display: inline-block;
+      color: $--PrimaryBlack--;
+      margin: 0 20px -3px 0;
+      font-size: 18px;
+      text-decoration: none;
+      &:after {
+        content: '';
+        display: block;
+        border-bottom: 3px solid $--PrimaryBlue--;
+        width: 40%;
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+      }
+      &:hover:after {
+        transform: scaleX(1);
+        transform-origin: 0% 50%;
+      }
+      &:last-child {
+        margin: 0 0 0 0;
+      }
+      .ico {
+        position: relative;
+        top: 3px;
+      }
+    }
+    .followBtn {
+      float: right;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      border-radius: 3px;
+      background: $--PrimaryBlue--;
+      color: $--PrimaryWhite--;
+      padding: 8px 15px 8px 15px;
+      font-size: 18px;
+      font-weight: bold;
+      position: relative;
+      top: -10px;
+    }
+  }
+}
+
+/* =======================
 ====> 404 Page Style
-================== */
+====================== */
 .ErrStyle {
   display: flex;
   flex-direction: column;

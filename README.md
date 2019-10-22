@@ -1,6 +1,10 @@
 # Memezoid
 Share Memes with the world.
 
+<p align='center'>
+  <img src='./client/src/images/README.png' alt='Memezoid Profile View'>
+</p>
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4fbc3b85-5202-493a-b577-13a8278f7f3f/deploy-status)](https://app.netlify.com/sites/memezoid/deploys)
 
 ## Prerequisites
