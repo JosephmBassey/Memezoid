@@ -1,0 +1,16 @@
+# Dependency directories
+.yarn-integrity
+yarn-debug.log*
+yarn-error.log*
+yarn-error.log
+npm-debug.log*
+node_modules/
+yarn.lock
+.DS_Store
+.pnp.js
+.cache/
+public
+*.log
+.pnp/
+.env
+logs
