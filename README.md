@@ -1,6 +1,8 @@
 # Memezoid
 Share Memes with the world.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4fbc3b85-5202-493a-b577-13a8278f7f3f/deploy-status)](https://app.netlify.com/sites/memezoid/deploys)
+
 ## Prerequisites
 
 - [Node](https://nodejs.org/en/docs/) (Recommend using v12.10.0 or higher)
