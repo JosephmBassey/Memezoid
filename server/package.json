@@ -25,6 +25,6 @@
   "scripts": {
     "start": "node src/server.js",
     "server": "nodemon src/server.js",
-    "dev": "concurrently \"yarn start\" \"cd client && yarn start\""
+    "dev": "concurrently \"yarn start\" \"cd ../client && yarn start\""
   }
 }
