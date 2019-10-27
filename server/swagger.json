@@ -1,0 +1,313 @@
+{
+  "swagger": "2.0",
+  "title": "DriveMe API Documentation",
+  "description": "API documentation for DriveMe endpoints resources",
+  "license": {
+    "name": "MIT",
+    "url": "https://opensource.org/licenses/MIT"
+  },
+  "version": "1.0.0",
+  "host": "https://driveme-backend.herokuapp.com",
+  "basePath": "/api/v1",
+  "schemes": ["http", "https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/rider/register": {
+      "post": {
+        "tags": ["Riders Resources"],
+        "summary": "endpoint to create new rider",
+        "description": "Create new rider",
+        "parameters": [{
+          "name": "rider",
+          "description": "body object to create new rider account",
+          "in": "body",
+          "required": "true",
+          "schema": {
+            "$ref": "#definitions/RiderRegistrationModel"
+          }
+        }],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "create new rider account",
+            "schema": {
+              "$ref": "#definitions/RiderRegistrationModel"
+            }
+          }
+        }
+      }
+    },
+    "/rider/login": {
+      "post": {
+        "tags": ["Riders Resources"],
+        "summary": "endpoint to login a  rider",
+        "description": "Rider Login",
+        "parameters": [{
+          "name": "rider",
+          "description": "body object to login  rider",
+          "in": "body",
+          "required": "true",
+          "schema": {
+            "$ref": "#definitions/RiderLoginModel"
+          }
+        }],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "return a login message and  jwt token",
+            "schema": {
+              "$ref": "#definitions/RiderToken"
+            }
+          }
+        }
+      }
+    },
+    "/rider/me": {
+      "get": {
+        "tags": ["Riders Resources"],
+        "summary": "endpoint to get  rider profile",
+        "description": "Endpoint to get current login rider Profile ",
+        "parameters": [{
+          "name": "Authorization",
+          "description": "Access token to authorize the rider",
+          "in": "header",
+          "type": "string",
+          "required": true
+        }],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A JSON object containing rider information",
+            "schema": {
+              "$ref": "#definitions/Rider"
+            }
+          }
+        }
+      }
+    },
+    "/rider/payment": {
+      "post": {
+        "tags": ["Payment Resources"],
+        "summary": "endpoint to to charge rider",
+        "description": "Charge Rider",
+        "parameters": [{
+          "name": "payment",
+          "description": "body object to get rider saved card details ",
+          "in": "body",
+          "required": "true",
+          "schema": {
+            "$ref": "#definitions/PaymentModel"
+          }
+        }],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "return  payment responses",
+            "schema": {
+              "$ref": "#definitions/PaymentResponse"
+            }
+          }
+        }
+      }
+    },
+    "/rider/cards": {
+      "get": {
+        "tags": ["Riders Resources"],
+        "summary": "endpoint to get fetch rider's card",
+        "description": "fetch authenticated rider card",
+        "parameters": [{
+          "name": "Authorization",
+          "description": "Bearer token",
+          "in": "header",
+          "required": "true"
+        }],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "An array of card objects",
+            "schema": {
+              "$ref": "#definitions/CardResponse"
+            }
+          }
+        }
+      }
+    },
+    "/payment/verify/{reference}": {
+      "post": {
+        "tags": ["Payment Resources"],
+        "summary": "endpoint to to verify and save rider card",
+        "description": "Add new rider card",
+        "parameters": [{
+            "name": "reference",
+            "in": "path",
+            "required": "true",
+            "description": "payment reference",
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "description": "Bearer token",
+            "in": "header",
+            "required": "true"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "payment responses",
+            "schema": {
+              "$ref": "#definitions/PaymentResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "RiderRegistrationModel": {
+      "required": ["firstName", "lastName",
+        "email", "phone", "password"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "RiderLoginModel": {
+      "required": ["email", "password"],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "RiderToken": {
+      "properties": {
+        "msg": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+
+    },
+    "Rider": {
+      "required": ["firstName", "lastName",
+        "email", "phone", "password"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "PaymentModel": {
+      "required": ["amount", "card_type",
+        "last4"
+      ],
+      "properties": {
+        "amount": {
+          "type": "string"
+        },
+        "card_type": {
+          "type": "string"
+        },
+        "last4": {
+          "type": "string"
+        }
+      }
+    },
+    "PaymentResponse": {
+      "required": ["amount", "message", "transaction_date", "transaction_status"],
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "transaction_status": {
+          "type": "string"
+        },
+        "transaction_date": {
+          "type": "string"
+        }
+      }
+    },
+    "CardModel": {
+
+    },
+    "CardResponse": {
+      "required": ["reusable", "card_type",
+        "last4", "authorization_code"
+      ],
+      "properties": {
+        "authorization_code": {
+          "type": "string"
+        },
+        "card_type": {
+          "type": "string"
+        },
+        "last4": {
+          "type": "string"
+        },
+        "exp_month": {
+          "type": "string"
+        },
+        "exp_year": {
+          "type": "string"
+        },
+        "bin": {
+          "type": "string"
+        },
+        "bank": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "signature": {
+          "type": "string"
+        },
+        "reusable": {
+          "type": "boolean"
+        },
+        "country_code": {
+          "type": "string"
+        }
+      }
+    }
+
+
+  }
+}

@@ -1,6 +1,8 @@
 const rateLimit = require('express-rate-limit'),
 mongoose = require('mongoose'),
 express = require('express'),
+cors = require('cors'),
+logger = require('morgan'),
 helmet = require('helmet'),
 hsts = require('hsts');
 const app = express();
@@ -12,6 +14,7 @@ const limiter = rateLimit({
 /* ====================
 ====>   Middleware
 ================== */
+
 app.use(helmet());
 app.use(limiter);
 app.use(hsts({ maxAge: 15552000 }));
@@ -19,11 +22,15 @@ app.use(hsts({ maxAge: 15552000 }));
 /* ====================
 ====>   Routes
 ================== */
-app.use('/api/v1/feed', require('./routes/api/v1/feed'));
-app.use('/api/v1/login', require('./routes/api/v1/login'));
-app.use('/api/v1/signup', require('./routes/api/v1/signup'));
-app.use('/api/v1/upload', require('./routes/api/v1/upload'));
-app.use('/api/v1/profile', require('./routes/api/v1/profile'));
+// app.use('/api/v1/feed', require('./api/v1/routes/feedRoute'));
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: false
+}));
+app.use(cors())
+app.use(logger('dev'));
+app.use('/api/v1/user', require('./api/v1/routes/userRoute'));
+
 
 /* ====================
 ====>   Start Server
@@ -32,7 +39,9 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`App started on port ${ port }...`);
 });
-mongoose.connect('MONGO_ATLAS_URI_HERE',
-  { useNewUrlParser: true }, () => {
+const DB_URL = process.env.DB_URL || 'mongodb://localhost:27017/memezoid'
+mongoose.connect(DB_URL,
+  { useNewUrlParser: true,useUnifiedTopology: true,     useCreateIndex: true,
+  }, () => {
   console.log('Database Started...');
 });

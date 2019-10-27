@@ -1,10 +1,10 @@
-const signupSchema = require('../../../schemas/signup');
+const uploadSchema = require('../../models/upload');
 const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
   res.json({
-    message: 'Hi Welcome to signup route!'
+    message: 'Hi Welcome to upload route!'
   });
 });
 module.exports = router;
